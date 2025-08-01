@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ParticleFormer: A 3D Point Cloud World Model for Multi-Object, Multi-Material Robotic Manipulation</title>
+<meta name="description" content="Abstract">
+<link rel="stylesheet" href="css/style.css">
+<link rel="canonical" href="https://particleformer.github.io/">
+<link rel="shortcut icon" href="asset/pic/icon.png"> 
+</head>
+<body>
+
+<main>
+<article class="project">
+<div class="cover">
+<div class="wrapper">
+<h1>ParticleFormer: A 3D Point Cloud World Model for Multi-Object, Multi-Material Robotic Manipulation</h1>
+
+<!-- <!-- <p class="authors"> -->
+  <span class="author">
+    <a target="_blank" href="https://suninghuang19.github.io/">Suning Huang</a>, 
+    <a target="_blank" href="https://qianzhong-chen.github.io/">Qianzhong Chen</a>,
+    <a target="_blank" href="https://keke-220.github.io/">Xiaohan Zhang</a>,
+    <a target="_blank" href="https://web.stanford.edu/~jksun/">Jiankai Sun</a>,
+    <a target="_blank" href="https://web.stanford.edu/~schwager/">Mac Schwager</a>
+  </span>
+
+<p class="venues">CoRL 2025</p>
+
+<p class="buttons">
+  <a href="https://arxiv.org/abs/2506.23126" target="_blank">Paper</a>
+  <a href="https://github.com/suninghuang19/mentor" target="_blank">Code (Coming soon)</a>
+  </p>
+
+</div>
+</div>
+
+<div class="content wrapper">
+
+<h2 id="highlights" style="color: red;">Highlights</h2>
+<p style="text-align: center">
+  </p>
+<p>We present experiment videos that demonstrate the effectiveness of our Transformer-based dynamics learning backbone and hybrid 3D point cloud supervision, along with rollout results from real-world robotic manipulation tasks. </p>
+
+<p style="text-align: center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/IX0aGdJInWU?si=qPCaSRnBrpJvqfdB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+
+
+<h2 id="abstract">Abstract</h2>
+<p>3D world models (i.e., learning-based 3D dynamics models) offer a promising approach to generalizable robotic manipulation by capturing the underlying physics of environment evolution conditioned on robot actions. However, existing 3D world models are primarily limited to single-material dynamics using a particle-based Graph Neural Network model, and often require time-consuming 3D scene reconstruction to obtain 3D particle tracks for training. In this work, we present ParticleFormer, a Transformer-based point cloud world model trained with a hybrid point cloud reconstruction loss, supervising both global and local dynamics features in <strong>multi-material, multi-object</strong> robot interactions. ParticleFormer captures fine-grained multi-object interactions between rigid, deformable, and flexible materials, trained directly from real-world robot perception data without an elaborate scene reconstruction. We demonstrate the model's effectiveness both in 3D scene forecasting tasks, and in downstream manipulation tasks using a Model Predictive Control (MPC) policy. In addition, we extend existing dynamics learning benchmarks to include diverse multi-material, multi-object interaction scenarios. We validate our method on six simulation and three real-world experiments, where it consistently outperforms leading baselines by achieving superior dynamics prediction accuracy and less rollout error in downstream visuomotor tasks. </p>
+
+
+<h2 id="method">Method</h2>
+<p style="text-align: center">
+  <img style="width: 100%" src="asset/pic/model.png" />
+  </p>
+<p> Modeling dynamics in multi-object, multi-material scenarios is challenging due to complex and heterogeneous interactions. In this paper, we propose ParticleFormer, a Transformer-based point cloud world model trained with hybrid supervision, enabling accurate prediction and model-based control in robotic manipulation tasks. Our method firstly reconstructs particle-level states from stereo image inputs via stereo matching and segmentation. Then the Transformer encoder models interaction-aware dynamics over particle features concatenating position, material, and motion cues. Finally, the model is trained using a hybrid loss computed against future ground-truth states extracted from the next stereo frames.</p>
+
+
+<h2 id="results">Results</h2>
+
+<strong>Dynamics Modeling:</strong> ParticleFormer can generate visually plausible and physically coherent dynamics, especially in complex multi-material interactions.
+
+<ul>
+  <li>Qualitative Results:</li>
+</ul>  
+
+<p style="text-align: center">
+  <img style="width: 100%" src="asset/pic/results_1.png" />
+</p>
+
+<ul>
+  <li>Quantitative Results:</li>
+</ul>  
+
+<p style="text-align: center">
+  <img style="width: 100%" src="asset/pic/results_2.png" />
+  <img style="width: 100%" src="asset/pic/results_3.png" />
+</p>
+
+<strong>Model-Based Control:</strong> ParticleFormer can enhance visuomotor control performance in downstream manipulation tasks.
+
+<ul>
+  <li>Simulation Results:</li>
+</ul>  
+
+<p style="text-align: center">
+  <img style="width: 100%" src="asset/pic/results_4.png" />
+</p>
+
+<ul>
+  <li>Real-World Results:</li>
+</ul>  
+
+<p style="text-align: center">
+  <img style="width: 100%" src="asset/pic/results_5.png" />
+</p>
+
+
+
+
+</div>
+</article>
+
+<script>
+  document.querySelector('body').onload = function() {
+    console.log('SCROLL', window.scrollY);
+    if (window.scrollY > 10) return;
+    const element = document.querySelector('.cover')
+    const pos = element.getBoundingClientRect().top + window.scrollY
+    window.scroll({top: pos, behavior: 'smooth'})
+  }
+  </script>
+  </main>
+  <footer></footer>
+  <script async src='/scripts.js'></script>
+  </body>
+  
+</html>
